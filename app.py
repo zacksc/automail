@@ -2,13 +2,17 @@ from flask import Flask, render_template, request
 from email_classificador import EmailClassifier
 from email_responder import EmailResponder
 from leitor_arquivo import FileReader
-from dotenv import load_dotenv
 import os
 
-load_dotenv() 
 app = Flask(__name__)
 
-HUGGINGFACE_API_TOKEN = os.environ.get("HUGGINGFACE_API_TOKEN")
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except:
+    pass
+
+HUGGINGFACE_API_TOKEN = os.getenv("HUGGINGFACE_API_TOKEN")
 
 email_classificador = EmailClassifier()
 responder = EmailResponder(HUGGINGFACE_API_TOKEN)
