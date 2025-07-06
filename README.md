@@ -43,7 +43,7 @@ classificador-email/
 3. **Resposta Automática**: Dependendo da categoria, uma resposta é gerada automaticamente via modelo Mixtral-8x7B-Instruct-v0.1 da HuggingFace.
 4. **Interface**: O resultado e a resposta sugerida são exibidos de forma amigável, com opção de copiar a resposta.
 
-## Instalação
+## Instalação Local
 
 1. Clone o repositório.
 2. Instale as dependências:
@@ -52,13 +52,20 @@ classificador-email/
 pip install -r requirements.txt
 ```
 
-3. Execute o aplicativo:
+3. Crie um arquivo `.env` com sua variável `HUGGINGFACE_API_TOKEN`.
+
+4. Execute o aplicativo:
 
 ```sh
 python app.py
 ```
 
-4. Após rodar o comando acima, acesse o endereço exibido no terminal (geralmente http://localhost:5000) para utilizar o sistema.
+5. Após rodar o comando acima, acesse o endereço exibido no terminal (geralmente http://localhost:5000) para utilizar o sistema.
+
+## Acesse Online
+
+Você pode acessar a versão online do AutoMail em:  
+👉 **https://automail-jp22.onrender.com**
 
 ## requirements.txt
 
@@ -68,6 +75,7 @@ scikit-learn
 nltk
 PyMuPDF
 huggingface_hub
+python-dotenv
 ```
 
 ## Observações
