@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMail - Classificar</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+      .center-container {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+    </style>
+</head>
+<body>
+  <div class="center-container">
+    <h1 class="title">
+        Envie seu e-mail para
+      <span id="decoding-title"></span>
+      <br><em><strong>classificar e responder</strong></em>
+    </h1>
+    <form method="post" enctype="multipart/form-data" class="formulario">
+        <div class="form-group">
+            <div class="texto-form">
+                <label>Copie e cole o conteúdo do e-mail:</label>
+                <textarea name="texto" placeholder="Comece a digitar..." class="caixa-form"></textarea>
+            </div>
+            <div class="arquivo-form">
+                <label>Ou envie um arquivo (.txt ou .pdf):</label>
+                <input type="file" name="arquivo" class="caixa-form">
+            </div>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+  </div>
+</body>
+</html>

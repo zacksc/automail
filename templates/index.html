@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AutoMail</title>
+  <link rel="stylesheet" href="../static/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="center-container">
+    <h1 class="mainTitle">
+      <span class="typing-title"></span>
+    </h1>
+    <span class="logo"><em>AutoMail</em></span>
+    <a href="{{ url_for('classificar') }}">
+      <button class="icon-btn" title="Começar">
+        <i class="fa-solid fa-circle-chevron-right"></i>
+      </button>
+    </a>
+  </div>
+  <script>
+    const text = "Bem-vindo ao";
+    const typingEl = document.querySelector('.typing-title');
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        typingEl.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, 60);
+      } else {
+        setTimeout(() => {
+          document.querySelector('.logo').classList.add('fade-in');
+        }, 200);
+      }
+    }
+    type();
+  </script>
+</body>
+</html>
