@@ -4,6 +4,7 @@ from preprocessar import preprocessar_texto
 
 class EmailClassifier:
     def __init__(self):
+        # Exemplos de treino para cada categoria
         treinos_produtivos = [
             "Preciso atualizar o boleto do pagamento",
             "Qual status da minha solicitação?",
@@ -16,7 +17,6 @@ class EmailClassifier:
             "Poderiam me encaminhar o contrato novamente?",
             "Estou aguardando retorno do suporte técnico"
         ]
-        
         treinos_improdutivos = [
             "Olá, tudo bem? Feliz natal!",
             "Muito obrigado pelo atendimento",
@@ -29,22 +29,21 @@ class EmailClassifier:
             "Obrigado pela presteza",
             "Envio apenas cumprimentos"
         ]
-        
+        # Cria as tags correspondentes
         tags_produtivos = ["produtivo"] * len(treinos_produtivos)
         tags_improdutivos = ["improdutivo"] * len(treinos_improdutivos)
-        
         self.treinos = treinos_produtivos + treinos_improdutivos
         self.tags = tags_produtivos + tags_improdutivos
-        
 
+        # Pré-processa os textos de treino
         treinos_processados = [preprocessar_texto(t) for t in self.treinos]
-        
         self.vetorizador = CountVectorizer()
         self.matriz_treino = self.vetorizador.fit_transform(treinos_processados)
         self.modelo = LogisticRegression()
         self.modelo.fit(self.matriz_treino, self.tags)
 
     def classificar(self, texto):
+        # Pré-processa e classifica o texto recebido
         texto_proc = preprocessar_texto(texto)
         matriz_texto = self.vetorizador.transform([texto_proc])
         return self.modelo.predict(matriz_texto)[0]

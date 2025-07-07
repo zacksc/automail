@@ -2,6 +2,7 @@ from huggingface_hub import InferenceClient
 
 class EmailResponder:
     def __init__(self, api_token):
+        # Inicializa o cliente da HuggingFace com o modelo Mixtral
         self.client = InferenceClient(
             provider="together",
             model="mistralai/Mixtral-8x7B-Instruct-v0.1",
@@ -9,6 +10,7 @@ class EmailResponder:
         )
 
     def gerar_resposta(self, conteudo_email, categoria):
+        # Monta o prompt conforme a categoria
         if categoria == "produtivo":
             prompt = f"O seguinte email é produtivo e requer ação. Gere uma resposta educada e profissional: {conteudo_email}"
         else:
